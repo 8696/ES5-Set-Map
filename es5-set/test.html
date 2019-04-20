@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="es5-set.js"></script>
+
+<script>
+    var arr = [1, 2];
+    var fn = function () {
+    };
+    var obj = {};
+    var set = new Set();
+    set.add(arr);
+    set.add(fn);
+    console.log(set.size); // 2
+    console.log(set.has(arr)); // true
+
+    var iterator = set.keys();
+    console.log(iterator.next().value); // [1,2]
+    console.log(iterator.next().done); // false
+
+    console.log(iterator.next().done); // true
+    // 原生Set的keys === values
+    console.log(set.keys === set.values); // true
+
+    console.log('-----------');
+
+
+    var set2 = new Set([arr, arr, obj, obj, fn, fn, fn]);
+
+    console.log(set2.size); // 3
+    console.log(set2.delete(arr));  // true
+    console.log(set2.delete(fn));  // true
+    console.log(set2.has(arr)); // false
+    console.log(set2.size); // 1
+
+
+</script>
+</body>
+</html>

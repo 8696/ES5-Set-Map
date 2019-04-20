@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="es5-weakmap.js"></script>
+
+<script>
+
+    var arr = [1, 2];
+    var fn = function () {
+    };
+    var obj = {};
+
+    var weakmap = new WeakMap();
+
+    weakmap.set(obj, 'obj');
+    console.log(weakmap.has(obj));  // true
+    console.log(weakmap.get(obj));  // 'obj'
+    weakmap.delete(obj);
+    console.log(weakmap.get(obj));  // undefined
+    console.log(weakmap.has(obj));  // false
+
+    // weakmap.set('abc', 123);    // TypeError: Invalid value used as weak map key
+
+    console.log('--------------');
+
+    var weakmap2 = new WeakMap([
+        [obj, 'obj'],
+        [obj, obj],
+        [arr, arr],
+    ]);
+
+    console.log(weakmap2.has(obj));  // true
+    console.log(weakmap2.delete(obj));  // true
+    console.log(weakmap2.has(obj));  // false
+
+</script>
+</body>
+</html>

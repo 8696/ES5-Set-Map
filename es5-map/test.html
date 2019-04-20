@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="es5-map.js"></script>
+
+<script>
+    var arr = [1, 2];
+    var fn = function () {
+    };
+    var obj = {};
+
+
+    var map = new Map();
+
+    map.set(arr, 'arr').set(fn, 'fn');
+    console.log(map.size); //2
+    console.log(map.has(fn)); // true
+    map.delete(arr);
+    console.log(map.size); //1
+
+    console.log('-----------');
+
+    var map2 = new Map([
+        [arr, arr],
+        [arr, arr],
+        [obj, 'obj'],
+        [obj, 'obj'],
+        [document.body, 'document.body'],
+        [document.body, 'document.body'],
+        [document.body, 'document.body'],
+        [document.body, 'document.body']
+    ]);
+
+    console.log(map2.get(document.body));   // 'document.body'
+    console.log(map2.size);     // 3
+    // iterator
+    var iteratorKeys = map2.keys();
+    console.log(iteratorKeys.next());   // {value: Array(2), done: false}
+    console.log(iteratorKeys.next());   // {value: {…}, done: false}
+    console.log(iteratorKeys.next());   // {value: body, done: false}
+    console.log(iteratorKeys.next());   // {value: undefined, done: true}
+
+    var iteratorEntries = map2.entries();
+    var iteratorValues = map2.values();
+    map2.forEach(function (value, key, map) {
+    });
+
+
+</script>
+</body>
+</html>

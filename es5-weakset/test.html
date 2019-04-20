@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="es5-weakset.js"></script>
+
+<script>
+    var arr = [1, 2];
+    var fn = function () {
+    };
+    var obj = {};
+
+    var weakset = new WeakSet();
+    weakset.add(obj);
+    console.log(weakset.has(obj));  // true
+    weakset.add(fn);
+    console.log(weakset.has(fn));   //true
+    weakset.delete(fn);
+    console.log(weakset.has(fn));   // false
+    // weakset.add(213);   // TypeError: Invalid value used in weak set
+
+    console.log('-----------');
+
+
+    var weakset2 = new WeakSet([
+        window, obj, fn
+    ]);
+    console.log(weakset2.has(window));  //true
+    //weakset2.add(null);     //TypeError: Invalid value used in weak set
+
+
+</script>
+</body>
+</html>
