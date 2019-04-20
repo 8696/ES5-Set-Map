@@ -33,6 +33,11 @@
          * @return {Array} 直接返回数据，具体查看new Fn显示返回数据的结果
          * */
         function Map(constructorData) {
+            // 简单处理构造函数不能被直接调用
+            if (this === window) {
+                throw new TypeError('Constructor Set requires \'new\'');
+            }
+
             !constructorData && (constructorData = []);
             var data = (function () {
                 var toString = Object.prototype.toString,

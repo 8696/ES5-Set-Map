@@ -34,7 +34,15 @@
          * */
 
         function WeakSet(constructorData) {
+
+            // 简单处理构造函数不能被直接调用
+            if (this === window) {
+                throw new TypeError('Constructor Set requires \'new\'');
+            }
+
             !constructorData && (constructorData = []);
+
+
             var data = (function () {
                 /**
                  * @description ES6原生具备 Iterator 接口的数据结构如下
