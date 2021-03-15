@@ -2,15 +2,15 @@
 
 #### 项目介绍
 
-- 使用数组模拟ES6中的Set和Map对象，该模拟基本实现了所有原生的api，仅构造传参部分未实现
+- 使用数组模拟 ES6 中的 Set 和 Map 对象，该模拟基本实现了所有原生的 api，仅构造传参部分未实现
 
 #### 测试
 - 各文件夹中test.html可见demo
 
+
+##### Set
+
 ```javascript
-
-// *** 001 Set
-
     var arr = [1, 2];
     var fn = function () {
     };
@@ -39,12 +39,11 @@
     console.log(set2.delete(fn));  // true
     console.log(set2.has(arr)); // false
     console.log(set2.size); // 1
+```
 
+##### WeakSet
 
-
-
-// *** 002 WeakSet
-
+```javascript
     var arr = [1, 2];
     var fn = function () {
     };
@@ -67,11 +66,11 @@
     ]);
     console.log(weakset2.has(window));  //true
     //weakset2.add(null);     //TypeError: Invalid value used in weak set
+```
 
+##### Map
 
-
-// *** 003 Map
-    
+```javascript
     var arr = [1, 2];
     var fn = function () {
     };
@@ -112,13 +111,11 @@
     var iteratorValues = map2.values();
     map2.forEach(function (value, key, map) {
     });
-    
+```
 
+##### WeakMap
 
-
-
-// *** 002 WeakMap
-
+```javascript
     var arr = [1, 2];
     var fn = function () {
     };
@@ -146,5 +143,4 @@
     console.log(weakmap2.has(obj));  // true
     console.log(weakmap2.delete(obj));  // true
     console.log(weakmap2.has(obj));  // false
-
 ```
